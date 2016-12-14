@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      table, th, td {border: 1px solid pink;}
+      th {background-color:#aaa}
+	</style>
+  </head>
+  <body>
+		  <h1>Student list </h1>
+    <table>   
+      <tr>
+        <th>Full Name</th>
+    	<th>Birthday</th>
+		<th>Student Card Number</th>
+     </tr>
+     {% for student in StudentList %}
+        <tr>
+    	  <td>{{ student.full_name }}</td>
+	      <td>{{ student.birthday }}</td>
+    	  <td>{{ student.student_card }}</td>
+		  <td>
+		    <a href="../action_tmpl/std/crt/{{group.id}}">create</a>
+			<a href="../action_tmpl/std/edt/{{group.id}}">edit</a>
+			<a href="../action_tmpl/std/dlt/{{group.id}}">delete</a>
+		  </td>
+      </tr>
+     {% endfor %}
+    </table>
+	<h2><a href="../group_tmpl">Back to Groups</a></h2>
+  </body>
+</html>

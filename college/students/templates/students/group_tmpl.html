@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <style>
+      table, th, td {border: 1px solid black;}
+    </style>
+  </head>
+  <body>
+    <h1>Group list</h2>
+    <table>
+      <tr>
+        <th>Name</th>
+		<th>Amount</th>
+        <th>Warden</th>
+      </tr>
+      {% for group in GroupList %}
+        <tr>
+		  <td>
+          <a href='../student_tmpl/{{group.id}}'>{{ group.name }}</a>
+		  </td>
+          <td>{{ group.st_cnt }}</td>
+	      <td>{{ group.warden.full_name }}</td>
+          <td>
+		    <a href="../action_tmpl/grp/crt/{{group.id}}">create</a>
+			<a href="../action_tmpl/grp/edt/{{group.id}}">edit</a>
+			<a href="../action_tmpl/grp/dlt/{{group.id}}">delete</a>
+		  </td>
+		</tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

@@ -1,0 +1,129 @@
+[  
+	{
+		"model": "students.Student",
+	  	"pk": 1,
+	    "fields": {
+		    "full_name": "Peter Griffin",
+            "birthday": "1975-05-11",
+            "student_card": "FG9-a2J4545", 
+            "st_group": 1
+		}
+    },
+	{
+		"model": "students.Student",
+	  	"pk": 2,
+	    "fields": {
+		    "full_name": "Lois Griffin",
+            "birthday": "1979-09-07",
+            "student_card": "FG4-f2J5431", 
+            "st_group": 1
+		}
+    },
+    {
+		"model": "students.Student",
+	  	"pk": 3,
+	    "fields": {
+		    "full_name": "Chris Griffin",
+            "birthday": "1999-05-11",
+            "student_card": "KL3-t9R4332", 
+            "st_group": 1
+		}
+    },
+	{
+		"model": "students.Student",
+	  	"pk": 4,
+	    "fields": {
+		    "full_name": "Meg Griffin",
+            "birthday": "2003-07-21",
+            "student_card": "HU5-w6Y5622", 
+            "st_group": 1
+		}
+    },
+	{
+		"model": "students.Student",
+	  	"pk": 5,
+	    "fields": {
+		    "full_name": "Stewie Griffin",
+            "birthday": "2009-06-01",
+            "student_card": "HI9-k4J6463", 
+            "st_group": 1
+		}
+    },
+	{
+		"model": "students.Student",
+	  	"pk": 6,
+	    "fields": {
+		    "full_name": "Brian Griffin",
+            "birthday": "2009-11-22",
+            "student_card": "OU9-m3H458", 
+            "st_group": 1
+		}
+    },
+	{
+		"model": "students.Student",
+	  	"pk": 7,
+	    "fields": {
+		    "full_name": "Homer Simpson",
+            "birthday": "1975-05-11",
+            "student_card": "NF9-d2J595", 
+            "st_group": 2
+		}
+    },
+	{
+		"model": "students.Student",
+	  	"pk": 8,
+	    "fields": {
+		    "full_name": "Marge Simpson",
+            "birthday": "1979-09-07",
+            "student_card": "UI4-d3J5623", 
+            "st_group": 2
+		}
+    },
+    {
+		"model": "students.Student",
+	  	"pk": 9,
+	    "fields": {
+		    "full_name": "Bart Simpson",
+            "birthday": "1999-05-11",
+            "student_card": "HU8-v5E2356", 
+            "st_group": 2
+		}
+    },
+	{
+		"model": "students.Student",
+	  	"pk": 10,
+	    "fields": {
+		    "full_name": "Lisa Simpson",
+            "birthday": "2003-07-21",
+            "student_card": "FE9-g6D1526", 
+            "st_group": 2
+		}
+    },
+	{
+		"model": "students.Student",
+	  	"pk": 11,
+	    "fields": {
+		    "full_name": "Maggie Simpson",
+            "birthday": "2009-06-01",
+            "student_card": "FR9-u4Y6874", 
+            "st_group": 2
+		}
+    },
+	{
+	    "model": "students.Group",
+		"pk": 1,
+		"fields": {
+		    "name": "GRF_NS-2:05",
+			"warden": 6 
+		}
+	},
+    {
+	    "model": "students.Group",
+		"pk": 2,
+		"fields": {
+		    "name": "SMS_NS-4:03",
+			"warden": 9 
+		}
+	}
+]
+ 
