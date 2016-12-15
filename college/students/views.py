@@ -2,17 +2,16 @@ from django.shortcuts import render
 from django.views import generic
 from .models import Student, Group
 from .forms import StudentForm, GroupForm
-
-class StudentView(generic.ListView):
-    template_name = 'students/student_tmpl.html'
-    context_object_name = 'StudentList'
-
-    def get_queryset(self):
-        """Return students from group"""
-        return Student.objects.filter(st_group=self.kwargs['grp_id'])
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.core.urlresolvers import reverse_lazy
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class GroupView(generic.ListView):
+#@login_required
+class GroupView(LoginRequiredMixin, generic.ListView):
+    login_url = '/admin/login/'
+    redirect_field_name = 'group_tmpl'
     template_name = 'students/group_tmpl.html'
     context_object_name = 'GroupList'
     
@@ -27,26 +26,79 @@ class GroupView(generic.ListView):
     # model = Group
 
 
-def actions(request, typ, act, obj_id):
-    if typ == 'std':
-        workForm = StudentForm
-        workModel = Student
-    elif typ == 'grp':
-        workForm = GroupForm
-        workModel = Group.objects.get(id=int(obj_id))
-        print(workForm(workModel))
-    if act == 'crt':
-        form = workForm()
-        return render(request, 'students/action_tmpl.html', 
-                      {'form':form,'act':act})
-    elif act == 'edt':
-        form = workForm(workModel)
-        return render(request, 'students/action_tmpl.html',
-                      {'form':form,'act':act})
-    elif act == 'dlt':
-        form = workForm(workModel.objects.get(id=int(obj_id)))
-        return render(request, 'students/action_tmpl.html', 
-                      {'form':form,'act':act})
+class StudentView(generic.ListView):
+    template_name = 'students/student_tmpl.html'
+    context_object_name = 'StudentList'
+
+    def get_queryset(self):
+        """Return students from group"""
+        return Student.objects.filter(st_group=self.kwargs['grp_id'])
+
+
+class CrtGroup(generic.CreateView):
+    model = Group
+    template_name = 'students/crt_grp.html'
+    fields = ['name', 'warden']
+    success_url = '../group_tmpl'
+
+
+class EdtGroup(generic.UpdateView):
+    model = Group
+    template_name= 'students/edt_grp.html'
+    fields = ['name', 'warden']
+    success_url = '../group_tmpl'
+
+
+class DltGroup(generic.DeleteView):
+#    context_object_name = 'obj'
+    model = Group
+    template_name= 'students/dlt_grp.html'
+#   fields = ['name', 'warden']
+    success_url = '../group_tmpl'
+#    success_url = reverse_lazy('del_grp/')
+
+
+class CrtStudent(generic.CreateView):
+    model = Student
+    template_name = 'students/crt_std.html'
+    fields = ['full_name','birthday', 'student_card', 'st_group']
+    success_url = '../group_tmpl'
+
+class EdtStudent(generic.UpdateView):
+    model = Student
+    template_name= 'students/edt_std.html'
+    fields = ['full_name','birthday', 'student_card', 'st_group']
+    success_url = '../group_tmpl'
+
+
+class DltStudent(generic.DeleteView):
+    model = Student
+    template_name= 'students/dlt_std.html'
+#    fields = ['full_name','birthday', 'student_card', 'st_group']
+    success_url = reverse_lazy('../group_tmpl')
+
+
+#central handler add/del/edt for any obj
+#def actions(request, typ, act, obj_id):
+#    if typ == 'std':
+#        workForm = StudentForm
+#        workModel = Student
+#    elif typ == 'grp':
+#        workForm = GroupForm
+#        workModel = Group.objects.get(id=int(obj_id))
+#        print(workForm(workModel))
+#    if act == 'crt':
+#        form = workForm()
+#        return render(request, 'students/action_tmpl.html', 
+#                      {'form':form,'act':act})
+#    elif act == 'edt':
+#        form = workForm(workModel)
+#        return render(request, 'students/action_tmpl.html',
+#                      {'form':form,'act':act})
+#    elif act == 'dlt':
+#        form = workForm(workModel.objects.get(id=int(obj_id)))
+#       return render(request, 'students/action_tmpl.html', 
+#                      {'form':form,'act':act})
 
 #    if request.method == 'POST':
 #        form = StudentForm(request.POST)

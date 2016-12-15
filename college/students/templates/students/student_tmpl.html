@@ -7,12 +7,13 @@
 	</style>
   </head>
   <body>
-		  <h1>Student list </h1>
+    <h1>Student list from {{StudentList.first.st_group.name}} group</h1>
     <table>   
       <tr>
         <th>Full Name</th>
     	<th>Birthday</th>
 		<th>Student Card Number</th>
+		<th><a href="../crt_std/0">create</a></th>
      </tr>
      {% for student in StudentList %}
         <tr>
@@ -20,9 +21,8 @@
 	      <td>{{ student.birthday }}</td>
     	  <td>{{ student.student_card }}</td>
 		  <td>
-		    <a href="../action_tmpl/std/crt/{{group.id}}">create</a>
-			<a href="../action_tmpl/std/edt/{{group.id}}">edit</a>
-			<a href="../action_tmpl/std/dlt/{{group.id}}">delete</a>
+			<a href="../edt_std/{{student.id}}">edit</a>
+			<a href="../dlt_std/{{student.id}}">delete</a>
 		  </td>
       </tr>
      {% endfor %}
