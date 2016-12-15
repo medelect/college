@@ -11,6 +11,9 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "college.settings")
+if os.path.exists('./settings_local.py'):
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "college.settings_local")
+else:
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "college.settings")
 
 application = get_wsgi_application()

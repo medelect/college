@@ -1,5 +1,11 @@
 import os
 
+#from configurations import Configuration
+
+#class Dev(Configuration):
+#    DEBUG = True
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -13,7 +19,7 @@ SECRET_KEY = 'w=&rfi5!yfw7x2@gktgtn&cu$152mf+1)9^bhg*f!bvvmi3d(('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.5',]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -65,9 +71,9 @@ WSGI_APPLICATION = 'college.wsgi.application'
 DATABASES = {
     'default': {
                  'ENGINE':'django.db.backends.postgresql',
-                 'NAME':'student_db',
-                 'USER':'axe',
-                 'PASSWORD':'222',
+                 'NAME':'production_db',
+                 'USER':'user',
+                 'PASSWORD':'pass',
                  'HOST':'127.0.0.1',
                  'PORT':'5432'
     },
