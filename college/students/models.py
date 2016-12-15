@@ -28,12 +28,5 @@ class Group(models.Model):
                           self.warden.full_name)
 
 
-class User(models.Model):
-    user_name =  models.CharField(max_length=30)
-    email = models.EmailField(max_length=20)
-    password = models.CharField(max_length=20)
-
-    def __str__(self):
-        return '%s' % (self.user_name)
 
 

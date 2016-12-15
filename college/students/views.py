@@ -78,35 +78,3 @@ class DltStudent(generic.DeleteView):
 #    fields = ['full_name','birthday', 'student_card', 'st_group']
     success_url = reverse_lazy('../group_tmpl')
 
-
-#central handler add/del/edt for any obj
-#def actions(request, typ, act, obj_id):
-#    if typ == 'std':
-#        workForm = StudentForm
-#        workModel = Student
-#    elif typ == 'grp':
-#        workForm = GroupForm
-#        workModel = Group.objects.get(id=int(obj_id))
-#        print(workForm(workModel))
-#    if act == 'crt':
-#        form = workForm()
-#        return render(request, 'students/action_tmpl.html', 
-#                      {'form':form,'act':act})
-#    elif act == 'edt':
-#        form = workForm(workModel)
-#        return render(request, 'students/action_tmpl.html',
-#                      {'form':form,'act':act})
-#    elif act == 'dlt':
-#        form = workForm(workModel.objects.get(id=int(obj_id)))
-#       return render(request, 'students/action_tmpl.html', 
-#                      {'form':form,'act':act})
-
-#    if request.method == 'POST':
-#        form = StudentForm(request.POST)
-#        if form.is_valid():
-#            form.save()
-#            return render(request, 'students/action_tmpl.html')
-#    else:
-#         form = ForumUserForm()
-#    return render(request, 'students/action.html', {'form':form})
-
