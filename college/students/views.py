@@ -6,7 +6,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.db import connection
 
 #@login_required
 class GroupView(LoginRequiredMixin, generic.ListView):
@@ -17,6 +17,7 @@ class GroupView(LoginRequiredMixin, generic.ListView):
     
     #find easier way
     def get_queryset(self):
+#        print(connection.queries[0]['time'],' | ',len(connection.queries))
         """Return group vs added field"""
         GroupList = Group.objects.all()
         for grp_obj in GroupList:
