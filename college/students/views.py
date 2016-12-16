@@ -78,9 +78,15 @@ class DltStudent(generic.DeleteView):
     success_url = reverse_lazy('../group_tmpl')
 
 
-def new_tag(request):
-    # work both
-    lstG = Group.objects.all()
-    lstS = Student.objects.all()
-    context = {'obj_lst': lstS }
+def new_tag(request, pk):
+    
+    if pk == '1': 
+        lst = Group.objects.all()
+    else:
+        lst = Student.objects.all()
+    context = {'obj_lst': lst }
     return render(request, 'students/new_tag.html', context)
+
+
+def index(request):
+    return render(request, 'students/index.html')

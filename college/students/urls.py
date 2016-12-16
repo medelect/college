@@ -44,5 +44,5 @@ urlpatterns = [
         views.DltStudent.as_view(),
         name='dlt_std'
         ),
-    url(r'^new_tag$', views.new_tag, name='new_tag')
+    url(r'^new_tag/(?P<pk>\d+)$', views.new_tag, name='new_tag')
 ]
