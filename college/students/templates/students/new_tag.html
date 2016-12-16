@@ -1,0 +1,6 @@
+<body>
+  {% load ref_tag %}
+    {% for object in obj_lst %}
+      <p>{{object}} -->	{% edit_tag object %}</p>
+    {% endfor %}
+</body>

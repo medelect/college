@@ -17,7 +17,6 @@ class GroupView(LoginRequiredMixin, generic.ListView):
     
     #find easier way
     def get_queryset(self):
-#        print(connection.queries[0]['time'],' | ',len(connection.queries))
         """Return group vs added field"""
         GroupList = Group.objects.all()
         for grp_obj in GroupList:
@@ -74,7 +73,14 @@ class EdtStudent(generic.UpdateView):
 
 class DltStudent(generic.DeleteView):
     model = Student
-    template_name= 'students/dlt_std.html'
+    template_name= 'smetudents/dlt_std.html'
 #    fields = ['full_name','birthday', 'student_card', 'st_group']
     success_url = reverse_lazy('../group_tmpl')
 
+
+def new_tag(request):
+    # work both
+    lstG = Group.objects.all()
+    lstS = Student.objects.all()
+    context = {'obj_lst': lstS }
+    return render(request, 'students/new_tag.html', context)
