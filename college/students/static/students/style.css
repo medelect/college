@@ -5,7 +5,9 @@ li a {
   color: white;
 }
 body {
-  opacity:0.8  ;  background: white url("images/london.jpg") no-repeat right bottom;
-  background-size: 100%;
+  opacity:0.9  ;  background: white url("images/london.jpg") no-repeat right bottom;
+  background-size: 100%; 
 }
-
+img {
+ border: 3px #ccc solid; border-radius: 100px;
+}
