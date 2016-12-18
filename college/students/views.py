@@ -7,11 +7,19 @@ from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import connection
+from django.views.generic.edit import FormView
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login
+from django.http import HttpResponseRedirect
+from django.views.generic.base import View
+from django.contrib.auth import logout
+
 
 #@login_required
 class GroupView(LoginRequiredMixin, generic.ListView):
-    login_url = '/admin/login/'
-    redirect_field_name = 'group_tmpl'
+    login_url = '../../students/login/'
+#    redirect_field_name = 'group_tmpl'
     template_name = 'students/group_tmpl.html'
     context_object_name = 'GroupList'
     
@@ -90,3 +98,33 @@ def new_tag(request, pk):
 
 def index(request):
     return render(request, 'students/index.html')
+
+
+class RegisterFormView(FormView):
+    form_class = UserCreationForm
+    success_url = "../login/"
+    template_name = "students/register.html"
+
+    def form_valid(self, form):
+        form.save()
+        return super(RegisterFormView, self).form_valid(form)
+
+
+
+class LoginFormView(FormView):
+    form_class = AuthenticationForm
+    template_name = "students/login.html"
+    success_url = "/"
+
+    def form_valid(self, form):
+        self.user = form.get_user()
+        login(self.request, self.user)
+        return super(LoginFormView, self).form_valid(form)
+
+
+class LogoutView(View):
+#    success_url = "students/logout.html"
+    def get(self, request):
+        request.path_info = '/'
+        logout(request)
+        return render(request, 'students/logout.html')

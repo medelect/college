@@ -6,7 +6,7 @@ from . import views
 app_name = 'students'
 
 urlpatterns = [
-    url(r'^login/$', login, name="my_login"),
+#    url(r'^login/$', login, name="my_login"),
     url(r'^group_tmpl/$',
         views.GroupView.as_view(),
         name = 'group_tmpl'
@@ -44,5 +44,9 @@ urlpatterns = [
         views.DltStudent.as_view(),
         name='dlt_std'
         ),
-    url(r'^new_tag/(?P<pk>\d+)$', views.new_tag, name='new_tag')
+    url(r'^new_tag/(?P<pk>\d+)$', views.new_tag, name='new_tag'),
+    url(r'^register/$', views.RegisterFormView.as_view()),
+    url(r'^login/$', views.LoginFormView.as_view()),
+    url(r'^logout/$', views.LogoutView.as_view()),
+
 ]

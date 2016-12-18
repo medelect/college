@@ -1,0 +1,11 @@
+li a {
+  font-weight: bold;
+  font-size: 30px;
+  font-style: italic;
+  color: white;
+}
+body {
+  opacity:0.8  ;  background: white url("images/london.jpg") no-repeat right bottom;
+  background-size: 100%;
+}
+

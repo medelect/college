@@ -7,10 +7,12 @@ class SQLMiddleware(MiddlewareMixin):
         h = '<p style="background-color: #9df; border: 2px solid #00f;'\
                 'border-radius: 5px;">' \
                 '<a href="/">Back to HOME</a></p>'
+        ll = "'students/logout'"
+        l = '<br><button onclick="window.location.href=%s">Logout</button>'%(ll)
         t = sum([ float(i['time']) for i in connection.queries])
         c = len(connection.queries)
         stng= '<p style="color:#0b0">timeSum: %s, queryAmount: %s</p>'
-        response.content = '%s%s%s' % (h, response.content, stng%(t,c))
+        response.content = '%s%s%s%s' % (h, response.content, l,stng%(t,c))
 
         return response
 
