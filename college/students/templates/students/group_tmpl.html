@@ -11,7 +11,7 @@
         <th>Name</th>
 		<th>Amount</th>
         <th>Warden</th>
-		<th><a href="../crt_grp/0">create</a></th>
+		<th><a href="../action/crt_grp/0">create</a></th>
       </tr>
       {% for group in GroupList %}
         <tr>
@@ -21,8 +21,8 @@
           <td>{{ group.st_cnt }}</td>
 	      <td>{{ group.warden.full_name }}</td>
           <td>
-			<a href="../edt_grp/{{group.id}}">edit</a>
-			<a href="../dlt_grp/{{group.id}}">delete</a>
+			<a href="../action/edt_grp/{{group.id}}">edit</a>
+			<a href="../action/dlt_grp/{{group.id}}">delete</a>
 		  </td>
 		</tr>
       {% endfor %}
