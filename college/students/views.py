@@ -128,3 +128,20 @@ class LogoutView(View):
         request.path_info = '/'
         logout(request)
         return render(request, 'students/logout.html')
+
+
+def common_act(request, way, pk):
+    types = {'grp':[10,'Group'],'std':[20,'Student']}
+    events = {'crt':[1,'Create'], 'edt':[2,'Edit'], 'dlt':[3,'Delete']}
+    ress = way.split('_')
+    act_code = types[ress[0]][0] + events[ress[1]][0]
+
+    action_way = {
+            '11': 'CrtGroup'
+            '12': 'EdtGroup'
+            '12': 'DltGroup'
+            '21': 'CrtStudent'
+            '22': 'EdtStudent'
+            '23': 'DltStudent'
+            }
+
