@@ -20,31 +20,7 @@ urlpatterns = [
 #        views.actions,
 #        name = 'action_tmpl'
 #    ),
-    url(r'^crt_grp/(?P<pk>\d{0,4})$',
-        views.CrtGroup.as_view(),
-        name='crt_grp'
-        ),
-    url(r'^edt_grp/(?P<pk>\d{0,4})$',
-        views.EdtGroup.as_view(),
-        name='edt_grp'
-        ),
-    url(r'^dlt_grp/(?P<pk>\d{0,4})$',
-        views.DltGroup.as_view(),
-        name='dlt_grp'
-        ),
-    url(r'^crt_std/(?P<pk>\d{0,4})$',
-        views.CrtStudent.as_view(),
-        name='crt_std'
-        ),
-    url(r'^edt_std/(?P<pk>\d{0,4})$',
-        views.EdtStudent.as_view(),
-        name='edt_std'
-        ),
-    url(r'^dlt_std/(?P<pk>\d{0,4})$',
-        views.DltStudent.as_view(),
-        name='dlt_std'
-        ),
-    url(r'^action/(?P<way>\w{7})/(?P<pk>\d{0,4})$',views.common_act(),name='common_act')
+    url(r'^action/(?P<way>\w{7})/(?P<pk>\d{0,4})$', views.common_act, name='common_act'),
     url(r'^new_tag/(?P<pk>\d+)$', views.new_tag, name='new_tag'),
     url(r'^register/$', views.RegisterFormView.as_view()),
     url(r'^login/$', views.LoginFormView.as_view()),

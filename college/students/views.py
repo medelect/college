@@ -137,11 +137,14 @@ def common_act(request, way, pk):
     act_code = types[ress[0]][0] + events[ress[1]][0]
 
     action_way = {
-            '11': 'CrtGroup'
-            '12': 'EdtGroup'
-            '12': 'DltGroup'
-            '21': 'CrtStudent'
-            '22': 'EdtStudent'
-            '23': 'DltStudent'
+            '11': CrtGroup,
+            '12': EdtGroup,
+            '12': DltGroup,
+            '21': CrtStudent,
+            '22': EdtStudent,
+            '23': DltStudent
             }
-
+    print(act_code)
+    #how to run class ... as_view()?
+    #how to send data in runed class...
+    act_code[action_way]
