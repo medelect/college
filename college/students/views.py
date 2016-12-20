@@ -34,7 +34,8 @@ class GroupView(LoginRequiredMixin, generic.ListView):
     # model = Group
 
 
-class StudentView(generic.ListView):
+class StudentView(LoginRequiredMixin, generic.ListView):
+    login_url = '../../students/login/'
     template_name = 'students/student_tmpl.html'
     context_object_name = 'StudentList'
 

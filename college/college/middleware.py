@@ -15,7 +15,7 @@ class SQLMiddleware(MiddlewareMixin):
 class HeadStrMiddleware(MiddlewareMixin):
     def process_response ( self, request, response ):
         hh = '<div style="background-color:#9df;border:2px solid #00f;'\
-                           'padding-right: 30px; border-radius:5px;">'\
+                           'margin-right: 30px; border-radius:5px;">'\
                '<div style="text-align:left">'\
                  '<h1 ><a href="/">Back to HOME </a></h1>'\
                '</div>'\
@@ -28,5 +28,14 @@ class HeadStrMiddleware(MiddlewareMixin):
             response.content = '%s%s' % (hh, response.content)
         return response
 
+
+class AddStrInAdminMiddleware(MiddlewareMixin):
+    def process_response ( self, request, response ):
+        home_rf = '<h1><a href="/">Back to HOME </a></h1>'
+        tmplF = 'Django administration</a></h1>'
+        tmplR = 'Django administration</a></h1>\n%s'
+        if 'admin' in request.path:
+            response.content = response.content.replace(tmplF, tmplR%(home_rf))
+        return response
 
 
