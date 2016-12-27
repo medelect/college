@@ -131,20 +131,23 @@ class LogoutView(View):
 
 
 def common_act(request, way, pk):
+    import pdb
+    pdb.set_trace()
     types = {'grp':[10,'Group'],'std':[20,'Student']}
     events = {'crt':[1,'Create'], 'edt':[2,'Edit'], 'dlt':[3,'Delete']}
     ress = way.split('_')
-    act_code = types[ress[0]][0] + events[ress[1]][0]
+    act_code = str(types[ress[1]][0] + events[ress[0]][0])
 
     action_way = {
             '11': CrtGroup,
             '12': EdtGroup,
-            '12': DltGroup,
+            '13': DltGroup,
             '21': CrtStudent,
             '22': EdtStudent,
             '23': DltStudent
             }
-    print(act_code)
+    print(action_way[act_code])
+    action_way[act_code].as_view()(request)
     #how to run class ... as_view()?
     #how to send data in runed class...
-    act_code[action_way]
+    
