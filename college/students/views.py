@@ -45,24 +45,24 @@ class StudentView(generic.ListView):
 
 class CrtGroup(generic.CreateView):
     model = Group
-    template_name = 'students/crt_grp.html'
+    template_name = 'students/action.html'
     fields = ['name', 'warden']
-    success_url = '../group_tmpl'
+    success_url = '../../group_tmpl'
 
 
 class EdtGroup(generic.UpdateView):
     model = Group
-    template_name= 'students/edt_grp.html'
+    template_name= 'students/action.html'
     fields = ['name', 'warden']
-    success_url = '../group_tmpl'
+    success_url = '../../group_tmpl'
 
 
 class DltGroup(generic.DeleteView):
 #    context_object_name = 'obj'
     model = Group
-    template_name= 'students/dlt_grp.html'
+    template_name= 'students/action.html'
 #   fields = ['name', 'warden']
-    success_url = '../group_tmpl'
+    success_url = '../../group_tmpl'
 #    success_url = reverse_lazy('del_grp/')
 
 
@@ -147,7 +147,7 @@ def common_act(request, way, pk):
             '23': DltStudent
             }
     print(action_way[act_code])
-    action_way[act_code].as_view()(request,pk, cls=action_way[act_code])
+    return action_way[act_code].as_view()(request,pk=pk)
     #how to run class ... as_view()?
     #how to send data in runed class...
     
